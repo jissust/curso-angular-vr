@@ -1,0 +1,76 @@
+<div class="center">
+  <section id="content">
+    <h1 class="subheader">Formulario: {{ page_title }}</h1>
+
+    <form class="mid-form" #articleForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <input
+          type="text"
+          name="title"
+          #title="ngModel"
+          [(ngModel)]="article.title"
+          required
+        />
+        <small *ngIf="!title.valid && title.touched">
+          El Titulo no es valido
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Biografia</label>
+        <textarea
+          name="content"
+          #content="ngModel"
+          [(ngModel)]="article.content"
+          required
+        ></textarea>
+        <small *ngIf="!content.valid && content.touched">
+          El contenido no es valido
+        </small>
+      </div>
+      <div class="is_edit" *ngIf="is_edit">
+        <div class="image-wrap">
+          <img
+            src="{{ url + 'get-image/' + article.image }}"
+            alt="{{ article.title }}"
+            *ngIf="article.image"
+          />
+          <img
+            src="/assets/images/default.jpg"
+            alt="{{ article.title }}"
+            *ngIf="!article.image"
+          />
+        </div>
+      </div>
+      <div class="form-group imagen">
+        <input
+          type="file"
+          class="d_none"
+          name="file"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+        <div class="imagen_file_name">
+          {{ fileName || "Sin archivos seleccionados" }}
+        </div>
+        <button
+          type="button"
+          class="imagen_btn_file"
+          (click)="fileUpload.click()"
+        >
+          Seleccionar imagen
+        </button>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <input
+        type="submit"
+        value="Enviar"
+        class="btn btn-success"
+        [disabled]="articleForm.invalid"
+      />
+    </form>
+  </section>
+</div>

@@ -1,0 +1,16 @@
+<app-slider [nombre]="'PÁGINA'"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <h1 class="subheader">Página de pruebas</h1>
+
+    <div *ngIf="nombre; else noHaParametros">
+      <h2>El nombre es: {{ nombre }}</h2>
+    </div>
+
+    <ng-template #noHaParametros>
+      <h2>No hay datos!</h2>
+    </ng-template>
+  </section>
+  <app-sidebar></app-sidebar>
+</div>
