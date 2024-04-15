@@ -23,7 +23,7 @@ Tecnologías utilizadas:
 * nodejs v20.10.0
 * SweetAlert (paquete para darle estilos a los alertas)
 
-    
+! La api a la que se conecta se ubica en el repo: https://github.com/jissust/curso-angular-vr-api    
 
     
     
